@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "project": "RewardTrace.dylib",
+  "date": "2026-09-21",
+  "repository": "a7987083/adios-",
+  "branch": "reward-trace-dylib",
+  "baseline_commit": "a997f854209de8375d4606fa611e0649d73e0a97",
+  "head": {"source": "git rev-parse HEAD", "recorded_static_sha": null},
+  "target": {
+    "architecture": "arm64",
+    "unityframework_sha256": "3af327d13bd102a6ad5938c23272e601626657e6b463df455354a44aae988057",
+    "mach_o_uuid": "589A1CB1-1AC9-3E73-943A-B45C315C17FC",
+    "metadata_version": 39,
+    "text_vmaddr": "0x0"
+  },
+  "build": {"local_iphoneos": "not_run_linux_host", "ci": "pending", "artifact": null},
+  "runtime": {"iphone_injection": "not_run", "reward_flow": "not_verified", "regression": "not_run"},
+  "phase": "ci_build",
+  "next_task": "Run GitHub Actions for reward-trace-dylib and fix the first real build error if present."
+}
