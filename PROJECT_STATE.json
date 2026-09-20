@@ -1,0 +1,20 @@
+{
+  "project": "RandomDice2 ad audit",
+  "repository": "a7987083/adios-",
+  "branch": "work/randomdice2-ad-audit",
+  "baseline_commit": "a997f854209de8375d4606fa611e0649d73e0a97",
+  "analysis_inputs": {
+    "UnityFramework_sha256": "3af327d13bd102a6ad5938c23272e601626657e6b463df455354a44aae988057",
+    "global_metadata_sha256": "0662f02703ebaf7e2116667ef8245b9e06881b20c12c954a79be4a1605b4e3c5",
+    "dump_cs_sha256": "d2d6902fcf4cb48137ec5d231c67a6d5b046d3d0dd81f9b450037a65317ec4a5"
+  },
+  "platform": "iOS arm64",
+  "engine": "Unity IL2CPP",
+  "metadata_version": 39,
+  "ad_stack": ["AdsController", "PercentAds.AdManager/IAdMediation", "PercentAdsMax.MaxMediation", "AppLovin MAX"],
+  "build": "not attempted",
+  "ci": "not configured",
+  "runtime": "not verified",
+  "phase": "static ad-flow audit",
+  "next_task": "Validate control flow and callback semantics; design runtime verification harness"
+}
