@@ -1,0 +1,39 @@
+name: build-reward-trace-dylib
+on:
+  push:
+    branches: ["reward-trace-dylib"]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Toolchain
+        run: |
+          set -euxo pipefail
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-path
+          xcrun --sdk iphoneos clang++ --version
+      - name: Build and verify arm64 dylib
+        run: |
+          set -euxo pipefail
+          make clean
+          make verify
+      - name: Record artifact hashes
+        run: |
+          set -euxo pipefail
+          shasum -a 256 build/RewardTrace.dylib | tee build/SHA256SUMS.txt
+          git rev-parse HEAD | tee build/BUILD_COMMIT.txt
+      - name: Upload dylib
+        uses: actions/upload-artifact@v4
+        with:
+          name: RewardTrace-arm64-${{ github.sha }}
+          path: |
+            build/RewardTrace.dylib
+            build/SHA256SUMS.txt
+            build/BUILD_COMMIT.txt
+          if-no-files-found: error
