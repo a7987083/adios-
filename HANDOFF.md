@@ -11,8 +11,7 @@ Trace whether four rewarded-ad business buttons proceed from click through real 
 - Architecture: arm64
 - `__TEXT vmaddr`: `0`
 - IL2CPP metadata: v39
-
-The uploaded IL2CPP output validator passed before implementation.
+- IL2CPP output validator: passed, 508,002 methods
 
 ## Critical flow
 
@@ -33,6 +32,8 @@ Methods returning `UniTask` are deliberately not hooked because a wrong native v
 
 The hook backend is resolved with `dlsym(RTLD_DEFAULT, "MSHookFunction")`; no hook library is linked into the product. UUID mismatch fails closed.
 
+The dylib observes only. It does not change callback booleans, `hasReceivedReward`, RPC parameters, responses, reward lists, counts, or UI state.
+
 ## Validated response fields
 
 - `BaseResponse.errorCode`: `+0x10`
@@ -44,6 +45,19 @@ The hook backend is resolved with `dlsym(RTLD_DEFAULT, "MSHookFunction")`; no ho
 - Chuseok `freeId/receiveCount/receiveDay`: `+0x40/+0x44/+0x48`
 - Coop boost `watchCount/remainCount`: `+0x20/+0x24`
 
+## Verified build
+
+- Source commit: `afa6f9a7d5d038d45e7f996752cb895bf20e4828`
+- Actions run: `35541086512`
+- Job: `106158753113`
+- Build result: success
+- Artifact ID: `10614881595`
+- Artifact ZIP SHA-256: `dd081260211bfecc776684feba6d7691fe5c828e97225a6abb8cc87569e34616`
+- RewardTrace.dylib SHA-256: `53293b7a6ccd17028a9134f8b82b660b16784e1d4ec45d9e02c5336632b344a8`
+- Output: Mach-O thin arm64 DYLIB, ad-hoc signed
+
 ## Runtime acceptance
 
-Do not mark runtime-verified until the injected dylib logs the complete chain and the actual server-backed reward/state remains changed after refresh/relaunch.
+Do not mark runtime-verified until the exact target build logs the complete chain and the actual server-backed reward/state remains changed after refresh/relaunch.
+
+Current state: compiled and artifact-verified; not injected, not runtime-verified, not regression-verified.

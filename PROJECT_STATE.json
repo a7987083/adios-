@@ -1,11 +1,11 @@
 {
-  "version": 1,
+  "version": 2,
   "project": "RewardTrace.dylib",
   "date": "2026-09-21",
   "repository": "a7987083/adios-",
   "branch": "reward-trace-dylib",
   "baseline_commit": "a997f854209de8375d4606fa611e0649d73e0a97",
-  "head": {"source": "git rev-parse HEAD", "recorded_static_sha": null},
+  "verified_source_commit": "afa6f9a7d5d038d45e7f996752cb895bf20e4828",
   "target": {
     "architecture": "arm64",
     "unityframework_sha256": "3af327d13bd102a6ad5938c23272e601626657e6b463df455354a44aae988057",
@@ -13,8 +13,31 @@
     "metadata_version": 39,
     "text_vmaddr": "0x0"
   },
-  "build": {"local_iphoneos": "not_run_linux_host", "ci": "pending", "artifact": null},
-  "runtime": {"iphone_injection": "not_run", "reward_flow": "not_verified", "regression": "not_run"},
-  "phase": "ci_build",
-  "next_task": "Run GitHub Actions for reward-trace-dylib and fix the first real build error if present."
+  "build": {
+    "local_syntax_check": "passed",
+    "offset_guard": "28_unique_aligned_rvas_passed",
+    "ci": "success",
+    "workflow_run_id": 35541086512,
+    "job_id": 106158753113,
+    "runner": "macos-15-arm64",
+    "xcode": "16.4",
+    "iphoneos_sdk": "18.5",
+    "apple_clang": "17.0.0",
+    "artifact_id": 10614881595,
+    "artifact_name": "RewardTrace-arm64-afa6f9a7d5d038d45e7f996752cb895bf20e4828",
+    "artifact_zip_sha256": "dd081260211bfecc776684feba6d7691fe5c828e97225a6abb8cc87569e34616",
+    "dylib_sha256": "53293b7a6ccd17028a9134f8b82b660b16784e1d4ec45d9e02c5336632b344a8",
+    "dylib_format": "Mach-O 64-bit dynamically linked shared library arm64",
+    "codesign": "adhoc"
+  },
+  "runtime": {
+    "iphone_injection": "not_run",
+    "hook_backend_resolution": "not_verified_on_device",
+    "reward_flow": "not_verified",
+    "server_response": "not_verified",
+    "reward_persistence": "not_verified",
+    "regression": "not_run"
+  },
+  "phase": "device_runtime_validation",
+  "next_task": "Inject RewardTrace.dylib in the authorized target build, capture [RewardTrace] logs for one button, and verify the server-backed reward/state persists after refresh or relaunch."
 }
