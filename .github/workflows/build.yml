@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-15
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
       - name: Toolchain
         run: |
           set -euxo pipefail
@@ -29,7 +29,7 @@ jobs:
           shasum -a 256 build/RewardTrace.dylib | tee build/SHA256SUMS.txt
           git rev-parse HEAD | tee build/BUILD_COMMIT.txt
       - name: Upload dylib
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: RewardTrace-arm64-${{ github.sha }}
           path: |
